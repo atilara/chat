@@ -5,6 +5,13 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
+// Evento padrão de conexão com o socket.io
+io.on('connection', (socket) => {
+  // Socket seria a instância do cliente
+  console.log(socket);
+  console.log(socket.id);
+});
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
