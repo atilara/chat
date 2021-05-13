@@ -1,12 +1,12 @@
 # 💬 Chat
 
-## ℹ About
+## ℹ Sobre
 
 Projeto desenvolvido durante a Formação NodeJS, com o intuito de fixar meus conhecimentos em NodeJS e aprendizado de Socket.io
 
 Consiste em um chat simples com campos para nome de usuário e mensagem
 
-## 🛠 Technologies Used
+## 🛠 Tecnologias Utilizadas
 
 - NodeJS
 - Express
