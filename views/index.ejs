@@ -7,10 +7,14 @@
   <title>Home</title>
 </head>
 <body>
-  <input type="text" name="msg" id="msg">
+  <h1>Chat</h1>
+  <div id="chat">
+    
+  </div>
+  <input type="text" name="username" id="username" placeholder="Nome de usuário"> <br> <br>
+  <input type="text" name="msg" id="msg" placeholder="Mensagem"> <br> <br>
   <button onclick="submit()">Enviar</button>
-  <br>
-  <p id="result"></p>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
   <script>
     var io = io('http://localhost:5500');
@@ -19,14 +23,24 @@
       console.log('Desconectado');
     });
     
-    io.on('result', (data) => {
-      var p = document.getElementById('result');
-      p.innerText = data;
+    io.on('showMsg', (data) => {
+      var chat = document.getElementById('chat');
+
+      var p = document.createElement('p');
+
+      p.innerText = data.username + ': ' + data.msg;
+
+      chat.append(p);
     });
     
     function submit() {
-      var input = document.getElementById('msg');
-      io.emit('msg', input.value);
+      var usernameField = document.getElementById('username');
+      var msgField = document.getElementById('msg');
+      
+      var msg = msgField.value;
+      var username = usernameField.value;
+
+      io.emit('msg', { username, msg })
     }
   </script>
 </body>

@@ -14,7 +14,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('msg', (data) => {
-    io.emit('result', data + ' Átila R');
+    socket.emit('showMsg', data);
   });
 });
 
