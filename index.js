@@ -14,7 +14,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('msg', (data) => {
-    socket.emit('showMsg', data);
+    // Envia a mensagem para todos utilizando o io, que é o servidor
+    io.emit('showMsg', data);
   });
 });
 
