@@ -8,6 +8,11 @@ var io = require('socket.io')(http);
 // Evento padrão de conexão com o socket.io
 io.on('connection', (socket) => {
   // Socket seria a instância do cliente
+  // Desconexão do cliente com o servidor
+  socket.on('disconnect', () => {
+    console.log(socket.id + ' desconectou');
+  });
+
   socket.on('msg', (data) => {
     io.emit('result', data + ' Átila R');
   });
