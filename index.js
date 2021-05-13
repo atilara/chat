@@ -8,8 +8,9 @@ var io = require('socket.io')(http);
 // Evento padrão de conexão com o socket.io
 io.on('connection', (socket) => {
   // Socket seria a instância do cliente
-  console.log(socket);
-  console.log(socket.id);
+  socket.on('msg', (data) => {
+    io.emit('result', data + ' Átila R');
+  });
 });
 
 app.set('view engine', 'ejs');
